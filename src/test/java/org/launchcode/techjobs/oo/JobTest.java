@@ -63,41 +63,40 @@ public class JobTest {
 
         String lineSeperator = System.lineSeparator();
 
-        String expectedString = lineSeperator
-                                +"ID: " + newJob.getId()
-                                +lineSeperator
-                                +"Name: " + newJob.getName()
-                                +lineSeperator
-                                +"Employer: " + newJob.getEmployer()
-                                +lineSeperator
-                                +"Location: " + newJob.getLocation()
-                                +lineSeperator
-                                +"Position Type: " + newJob.getPositionType()
-                                +lineSeperator
-                                +"Core Competency: " + newJob.getCoreCompetency()
-                                +lineSeperator;
+        String expectedOutput = String.format("""
+                                
+                                ID: %d
+                                Name: Product tester
+                                Employer: ACME
+                                Location: Desert
+                                Position Type: Quality control
+                                Core Competency: Persistence
+                                """, newJob.getId());
+
 
         String actualOutputString = newJob.toString();
         System.out.println(actualOutputString);
 
-        assertEquals(expectedString, actualOutputString);
+        assertEquals(expectedOutput, actualOutputString);
 
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
-        Job newJob = new Job("", new Employer("ACME"), new Location("Desert"),
-                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        Job newJob = new Job("", new Employer("ACME"), new Location("Desert"),
+//                new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        String expected = """
+        Job newJob = new Job("Web Developer",new Employer(""), new Location("StL"), new PositionType(""), new CoreCompetency("Java"));
+
+        String expected = String.format("""
                 
-                ID: 1
-                Name: Data not available
-                Employer: ACME
-                Location: Desert
-                Position Type: Quality control
-                Core Competency: Persistence
-                """;
+                ID: %d
+                Name: Web Developer
+                Employer: Data not available
+                Location: StL
+                Position Type: Data not available
+                Core Competency: Java
+                """, newJob.getId());
 
         assertEquals(expected, newJob.toString());
     }
