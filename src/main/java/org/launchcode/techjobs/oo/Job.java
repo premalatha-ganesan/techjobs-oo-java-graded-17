@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private Integer id;
     private static int nextId = 1;
 
     private String name;
@@ -54,7 +54,8 @@ public class Job {
     //  and id.
 
 
-    public int getId() {
+    public Integer getId() {
+
         return id;
     }
 
@@ -96,5 +97,43 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        String lineSeparator = System.lineSeparator();
+        String noData = "Data not available";
+        String outputName = this.name == null || this.name.isEmpty() ? noData : this.name;
+        String outputEmployer = (this.employer == null || this.employer.getValue() == null || this.getEmployer().getValue().isBlank()) ?
+                noData : this.employer.getValue();
+        String outputLocation = (this.location == null || this.location.getValue() == null || this.getLocation().getValue().isBlank()) ?
+                noData : this.location.getValue();
+        String outputPositionType = (this.positionType == null || this.positionType.getValue() == null || this.getPositionType().getValue().isBlank()) ?
+                noData : this.positionType.getValue();
+        String outputCoreCompetency = (this.coreCompetency == null || this.coreCompetency.getValue() == null || this.getCoreCompetency().getValue().isBlank()) ?
+                noData : this.coreCompetency.getValue();
+
+
+        if(this.name == null && this.employer == null && this.location == null &&
+                this.positionType == null && this.coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        else {
+            return lineSeparator
+                    + "ID: " + this.id
+                    + lineSeparator
+                    + "Name: " + outputName
+                    + lineSeparator
+                    + "Employer: " + outputEmployer
+                    + lineSeparator
+                    + "Location: " + outputLocation
+                    + lineSeparator
+                    + "Position Type: " + outputPositionType
+                    + lineSeparator
+                    + "Core Competency: " + outputCoreCompetency
+                    + lineSeparator;
+
+        }
     }
 }
