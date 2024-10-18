@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 public class JobTest {
     //TODO: Create your unit tests here
+
     @Test
     public void testSettingJobId () {
         Job job1 = new Job();
@@ -73,7 +74,6 @@ public class JobTest {
                                 Core Competency: Persistence
                                 """, newJob.getId());
 
-
         String actualOutputString = newJob.toString();
         System.out.println(actualOutputString);
 
@@ -88,7 +88,7 @@ public class JobTest {
 
         Job newJob = new Job("Web Developer",new Employer(""), new Location("StL"), new PositionType(""), new CoreCompetency("Java"));
 
-        String expected = String.format("""
+        String expectedOutput = String.format("""
                 
                 ID: %d
                 Name: Web Developer
@@ -98,7 +98,7 @@ public class JobTest {
                 Core Competency: Java
                 """, newJob.getId());
 
-        assertEquals(expected, newJob.toString());
+        assertEquals(expectedOutput, newJob.toString());
     }
 
     @Test

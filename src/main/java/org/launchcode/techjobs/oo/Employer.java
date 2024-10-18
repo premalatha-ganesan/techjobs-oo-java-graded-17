@@ -4,6 +4,12 @@ import java.util.Objects;
 
 public class Employer extends JobField {
 
+    public Employer(String value) {
+        super(value);
+    }
+
+}
+
 //    private int id;
 //    private static int nextId = 1;
  //   private String value;
@@ -13,11 +19,10 @@ public class Employer extends JobField {
 //        nextId++;
 //    }
 
-    public Employer(String value) {
+//    public Employer(String value) {
 //        this();
 //        this.value = value;
-        super(value);
-    }
+//    }
 
     // Custom toString, equals, and hashCode methods:
 
@@ -53,4 +58,4 @@ public class Employer extends JobField {
 //        this.value = value;
 //    }
 
-}
+
